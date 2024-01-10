@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-medium
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-medium
+  template:
+    metadata:
+      labels:
+        app: nginx-medium
+    spec:
+      containers:
+        -  image: thierno19/p1_html
+           name: nginx-medium-conatainer
+           ports:
+             -  containerPort: 80
+
+
+
+   

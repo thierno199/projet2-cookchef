@@ -1,0 +1,28 @@
+apiVersion: networking.k8s.io/v1
+# https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
+kind: Ingress
+metadata:
+  name: dyma-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: "nginx-dyma.store"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: medium-service
+            port:
+              number: 80
+  - host: "nginx-dyma.fr"  
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: cookchef-service
+            port:
+              number: 80
